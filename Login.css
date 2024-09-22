@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    background: linear-gradient(rgb(226, 149, 226), pink);
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.login-container {
+    background: linear-gradient(#ebb6e8, #9198e5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+span {
+    content: "\2709";
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #7c85ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+.buttons {
+    margin-top: 7%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.remember-me {
+    display: flex;
+    align-items: center; 
+}
+
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-top: 4%;
+    width: 100%;
+    cursor: pointer;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: none; 
+    border-bottom: 2px solid #ccc;
+    margin: 2px 0;
+    background-color: transparent; 
+    transition: border-color 0.3s ease;
+}
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #042d59;
+  outline: none;
+}
+
+.notify{
+    font-size: 10px;
+    margin-top: 5px;
+    display: block;
+    font-weight: bold;
+    color: rgb(69, 44, 108); /* Default color for weak password */
+    align-self: center;
+}
