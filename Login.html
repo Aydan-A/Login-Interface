@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paswword strong checker</title>
+    <title>Password Strength Checker</title>
     <link rel="stylesheet" href="Login.css" />
     <script src="Login.js" defer></script>
   </head>
   <body>
     <div class="login-container">
       <img src="loginFace.png" alt="loginFace" class="loginImg" />
-      <div>
+      <div class="form-section">
         <input
           type="email"
           name="email"
@@ -20,7 +20,6 @@
         />
         <input
           type="password"
-          name=""
           id="password"
           placeholder="Password"
           required
@@ -29,7 +28,7 @@
       <p class="notify"></p>
       <div class="details">
         <div class="remember-me">
-          <input type="checkbox" name="" id="" />
+          <input type="checkbox" name="remember" id="remember" />
           <label for="remember">Remember me</label>
         </div>
         <span class="forgotPassword">Forgot password?</span>

@@ -2,99 +2,132 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background: linear-gradient(rgb(226, 149, 226), pink);
+    background-image: url(background.jpg);
     background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.loginImg {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    align-self: center;
-}
-
 .login-container {
-    background: linear-gradient(#ebb6e8, #9198e5);
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    height: 300px;
+    background:none;
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 4px 15px rgba(239, 23, 23, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    animation: fadeInMove 1.2s ease forwards; /* Added animation */
 }
 
-span {
-    content: "\2709";
+@keyframes fadeInMove {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Starts slightly above */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Ends at the right position */
+    }
 }
 
-button {
+.loginImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.form-section {
     width: 100%;
-    padding: 10px;
-    background-color: #7c85ea;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-  }
-
-.buttons {
-    margin-top: 7%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
-}
-.remember-me {
-    display: flex;
-    align-items: center; 
-}
-
-
-.details {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    margin-top: 4%;
-    width: 100%;
-    cursor: pointer;
 }
 
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    padding: 10px;
-    border: none; 
-    border-bottom: 2px solid #ccc;
-    margin: 2px 0;
-    background-color: transparent; 
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid #fdfcfc;
+    background-color: transparent;
+    font-size: 16px;
     transition: border-color 0.3s ease;
 }
+
 input[type="email"]:focus,
 input[type="password"]:focus {
-  border-color: #042d59;
-  outline: none;
+    border-color: #6200ea;
+    outline: none;
 }
 
-.notify{
-    font-size: 10px;
+.notify {
+    font-size: 14px;
     margin-top: 5px;
     display: block;
     font-weight: bold;
-    color: rgb(69, 44, 108); /* Default color for weak password */
-    align-self: center;
+    color: #f2f0f0; /* Default color for weak password */
+    text-align: center;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+}
+
+.forgotPassword {
+    cursor: pointer;
+    color: #77d8f3;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.forgotPassword:hover {
+    color: #f15a23;
+    text-decoration: underline;
+}
+
+.buttons {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6200ea;
+    color: rgb(243, 238, 238);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+button:active {
+    transform: scale(0.98);
 }
