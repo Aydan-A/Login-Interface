@@ -8,9 +8,10 @@
     <script src="Login.js" defer></script>
   </head>
   <body>
+    <main>
     <div class="login-container">
       <img src="loginFace.png" alt="loginFace" class="loginImg" />
-      <div class="form-section">
+      <form class="form-section">
         <input
           type="email"
           name="email"
@@ -18,25 +19,31 @@
           placeholder="Email"
           required
         />
-        <input
+        <p class="notify-email"></p>
+        <div class="password-container">
+          <input
           type="password"
           id="password"
           placeholder="Password"
           required
         />
-      </div>
-      <p class="notify"></p>
+        <span class="toggle-password" id="toggle-password">
+          👁️
+        </span>
+        </div>
+        <p class="notify-password"></p>
       <div class="details">
         <div class="remember-me">
           <input type="checkbox" name="remember" id="remember" />
           <label for="remember">Remember me</label>
         </div>
-        <span class="forgotPassword">Forgot password?</span>
+        <a class="forgotPassword">Forgot password?</a>
       </div>
       <div class="buttons">
         <button type="submit" id="login">Login</button>
         <button type="submit" id="create">Create Account</button>
       </div>
-    </div>
+    </form>
+  </main>
   </body>
 </html>

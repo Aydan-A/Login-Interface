@@ -1,70 +1,78 @@
-let inputOfPassword = document.querySelector("#password");
-let inputOfEmail = document.querySelector("#email");
-let note = document.querySelector(".notify");
+let inputs = document.querySelectorAll("input");
+const passwordInput = document.querySelector("#password");
+let noteEmail = document.querySelector(".notify-email");
+let notePassword = document.querySelector(".notify-password");
 let loginBtn = document.querySelector("#login");
+const togglePassword = document.querySelector("#toggle-password");
 
+// Regex Patterns
 const specialCharacter = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 const upperCase = /[A-Z]/;
 const lowercase = /[a-z]/;
 const number = /[0-9]/;
+const emailCheck = /[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-inputOfPassword.addEventListener("input", () => {
-  let value = inputOfPassword.value;
+const updateNote = (noteElement, message, color) => {
+  noteElement.innerHTML = message;
+  noteElement.style.color = color;
+};
 
-  let hasUpperCase = upperCase.test(value);
-  let hasSpecialChar = specialCharacter.test(value);
-  let hasLowerCase = lowercase.test(value);
-  let hasNumber = number.test(value);
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    if (input.id === "password") {
+      let value = input.value;
 
-  if (value.length === 0) {
-    note.innerHTML = "";
-    return;
-  }
+      // Character type checks
+      let hasUpperCase = upperCase.test(value);
+      let hasSpecialChar = specialCharacter.test(value);
+      let hasLowerCase = lowercase.test(value);
+      let hasNumber = number.test(value);
 
-  // Weak password
-  if (hasLowerCase || hasNumber) {
-    note.innerHTML = "Weak password";
-    note.style.color = "red";
+      // Count the number of satisfied character types
+      let fourCheck =
+        (hasLowerCase ? 1 : 0) +
+        (hasUpperCase ? 1 : 0) +
+        (hasNumber ? 1 : 0) +
+        (hasSpecialChar ? 1 : 0);
 
-    // Medium strength password
-    if (hasLowerCase && hasNumber && hasUpperCase) {
-      note.innerHTML = "Medium strength password";
-      note.style.color = "orange";
-
-      // Strong password
-      if (hasLowerCase && hasNumber && hasUpperCase && hasSpecialChar) {
-        note.innerHTML = "Strong password";
-        note.style.color = "green";
+      if (value.length <= 9) {
+        updateNote(
+          notePassword,
+          "Password must be exactly 9 characters long",
+          "red"
+        );
+      } else {
+        if (fourCheck <= 2) {
+          updateNote(notePassword, "Weak password", "red");
+        } else if (fourCheck <= 3) {
+          updateNote(notePassword, "Medium strength password", "orange");
+        } else if (fourCheck === 4) {
+          updateNote(notePassword, "Strong password", "green");
+        }
+        if (value.length === 0) {
+          updateNote(notePassword, "", "");
+          return;
+        }
+      }
+    } else if (input.id === "email") {
+      let emailValue = input.value;
+      if (!emailCheck.test(emailValue)) {
+        updateNote(noteEmail, "Invalid email address", "red");
+        return;
+      } else {
+        updateNote(noteEmail, "Valid email adress", "green");
       }
     }
-  }
+  });
 });
+
+togglePassword.addEventListener("click", ()=>{
+  const isPasswordShown=passwordInput.getAttribute("type")==="password";
+  
+  passwordInput.setAttribute("type", isPasswordShown ? "text"  : "password")
+  togglePassword.textContent=isPasswordShown ? "🙈" : "👁️"
+})
 
 loginBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  
-  let emailValue = inputOfEmail.value;
-  let passwordValue = inputOfPassword.value;
-
-  // Email validation
-  if (!emailValue.includes("@")) {
-    note.innerHTML = "Invalid email address";
-    note.style.color = "red";
-    deleteNoteAfterDelay();
-    return;
-  }
-
-  // Password validation
-  if (passwordValue.length !== 9) {
-    note.innerHTML = "Password must be exactly 9 characters long";
-    note.style.color = "red";
-    deleteNoteAfterDelay();
-    return;
-  }
 });
-
-function deleteNoteAfterDelay() {
-  setTimeout(() => {
-    note.innerHTML = "";
-  }, 1500);
-}
