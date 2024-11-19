@@ -17,6 +17,11 @@ const updateNote = (noteElement, message, color) => {
   noteElement.style.color = color;
 };
 
+const addError = (input, message, noteElement) => {
+  input.style.borderColor = "red";
+  updateNote(noteElement, message, "red");
+};
+
 inputs.forEach((input) => {
   input.addEventListener("input", () => {
     if (input.name === "password") {
@@ -36,18 +41,18 @@ inputs.forEach((input) => {
         (hasSpecialChar ? 1 : 0);
 
       if (value.length <= 9) {
-        updateNote(
-          notePassword,
+        addError(
+          input,
           "Password must be exactly 9 characters long",
-          "red"
+          notePassword
         );
       } else {
         if (fourCheck <= 2) {
-          updateNote(notePassword, "Weak password", "red");
+          addError(input, "Weak password", notePassword);
         } else if (fourCheck <= 3) {
-          updateNote(notePassword, "Medium strength password", "orange");
+          addError(input, "Medium strength password", notePassword);
         } else if (fourCheck === 4) {
-          updateNote(notePassword, "Strong password", "green");
+          updateNote(notePassword, "Strong passwords", "green");
         }
         if (value.length === 0) {
           updateNote(notePassword, "", "");
@@ -57,7 +62,7 @@ inputs.forEach((input) => {
     } else if (input.name === "email") {
       let emailValue = input.value;
       if (!emailCheck.test(emailValue)) {
-        updateNote(noteEmail, "Invalid email address", "red");
+        addError(input, "Invalid email address", noteEmail);
         return;
       } else {
         updateNote(noteEmail, "Valid email adress", "green");
