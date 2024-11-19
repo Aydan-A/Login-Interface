@@ -19,7 +19,7 @@ const updateNote = (noteElement, message, color) => {
 
 inputs.forEach((input) => {
   input.addEventListener("input", () => {
-    if (input.id === "password") {
+    if (input.name === "password") {
       let value = input.value;
 
       // Character type checks
@@ -54,7 +54,7 @@ inputs.forEach((input) => {
           return;
         }
       }
-    } else if (input.id === "email") {
+    } else if (input.name === "email") {
       let emailValue = input.value;
       if (!emailCheck.test(emailValue)) {
         updateNote(noteEmail, "Invalid email address", "red");
