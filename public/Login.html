@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="./Login.css" />
+    <script src="./Login.js" defer></script>
+  </head>
+  <body>
+    <main>
+    <div class="login-container">
+      <img src="loginFace.png" alt="loginFace" class="loginImg" />
+      <form class="form-section" action="/submit" method="POST">
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          required
+        />
+        <p class="notify-email"></p>
+        <div class="password-container">
+          <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          required
+        />
+        <span class="toggle-password" id="toggle-password">
+          👁️
+        </span>
+        </div>
+        <p class="notify-password"></p>
+      <div class="details">
+        <div class="remember-me">
+          <input type="checkbox" name="remember" id="remember" />
+          <label for="remember">Remember me</label>
+        </div>
+        <a class="forgotPassword">Forgot password?</a>
+      </div>
+      <div class="buttons">
+        <button type="submit" id="login">Login</button>
+        <button type="submit" id="create">Create Account</button>
+      </div>
+    </form>
+  </main>
+  </body>
+</html>
